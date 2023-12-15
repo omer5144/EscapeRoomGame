@@ -1,0 +1,3 @@
+SLOTS_COUNT = 10
+
+EMPTY_SLOT = ""
