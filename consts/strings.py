@@ -1,5 +1,5 @@
 WINDOW_CAPTION = "Escape Room Game"
-ROOM_TITLE_FORMAT = "You are in {room_name}"
+SCENE_TITLE_FORMAT = "You are in {scene_name}"
 DEFAULT_HEADER_TEXT = ""
 
 FIRST_ROOM_NAME = "Room 1"
