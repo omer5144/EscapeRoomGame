@@ -34,9 +34,9 @@ class Game(Window):
         self.body_height = body_height
         self.footer_height = footer_height
 
-        self.header = Header(self.screen, self.width, self.header_height, self.x, self.header_y)
-        self.footer = Footer(self.screen, self.width, self.footer_height, self.x, self.footer_y, items.SLOTS_COUNT)
-        self.body = Body(self.screen, self.width, self.body_height, self.x, self.body_y, scenes_types, first_scene_type,
+        self.header = Header(self.screen, self.width, self.header_height, self.x, self.__header_y)
+        self.footer = Footer(self.screen, self.width, self.footer_height, self.x, self.__footer_y, items.SLOTS_COUNT)
+        self.body = Body(self.screen, self.width, self.body_height, self.x, self.__body_y, scenes_types, first_scene_type,
                          self.header, self.footer)
 
         pygame.display.set_caption(strings.WINDOW_CAPTION)
@@ -75,13 +75,13 @@ class Game(Window):
         self.is_running = False
 
     @property
-    def header_y(self) -> int:
+    def __header_y(self) -> int:
         return self.y
 
     @property
-    def body_y(self) -> int:
+    def __body_y(self) -> int:
         return self.y + self.header_height
 
     @property
-    def footer_y(self) -> int:
+    def __footer_y(self) -> int:
         return self.y + self.header_height + self.body_height

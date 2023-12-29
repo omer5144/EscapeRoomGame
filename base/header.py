@@ -24,18 +24,18 @@ class Header(Window):
         self.image.fill(colors.BLUE)
         self.screen.blit(self.image, (self.x, self.y))
 
-        self.screen.blit(self.title_surface, (self.x + self._title_x_padding, self.y + sizes.TITLE_Y_PADDING))
+        self.screen.blit(self.title_surface, (self.x + self.__title_x_padding, self.y + sizes.TITLE_Y_PADDING))
 
     def handle_events(self, events: list[Event]) -> None:
         super(Header, self).handle_events(events)
 
     def set_title(self, title: str) -> None:
-        self.title_surface = pygame.font.Font(None, self._font_height).render(title, True, colors.BLACK)
+        self.title_surface = pygame.font.Font(None, self.__font_height).render(title, True, colors.BLACK)
 
     @property
-    def _font_height(self) -> int:
+    def __font_height(self) -> int:
         return self.height - sizes.TITLE_Y_PADDING * 2
 
     @property
-    def _title_x_padding(self) -> int:
+    def __title_x_padding(self) -> int:
         return (self.width - self.title_surface.get_width()) // 2
