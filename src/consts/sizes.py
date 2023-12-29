@@ -10,3 +10,6 @@ ITEMS_X_MARGIN = 10
 ITEMS_Y_PADDING = 10
 
 ITEM_CONTENT_MARGIN = 5
+
+assert HEADER_HEIGHT >= 2 * TITLE_Y_PADDING, "header height is not compatible with what it includes"
+assert FOOTER_HEIGHT >= 2 * ITEMS_Y_PADDING, "header height is not compatible with what it includes"
