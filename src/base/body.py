@@ -17,7 +17,7 @@ class Body(Window):
                                               header, footer) for
                        scene_type in
                        scenes_types}
-        self.current_scene = first_scene_type
+        self.set_current_scene(first_scene_type)
 
     def render(self) -> None:
         super(Body, self).render()
@@ -29,4 +29,8 @@ class Body(Window):
 
         next_scene = self.scenes[self.current_scene].handle_events(events)
         if next_scene:
-            self.current_scene = next_scene
+            self.set_current_scene(next_scene)
+
+    def set_current_scene(self, scene_type: type) -> None:
+        self.current_scene = scene_type
+        self.scenes[self.current_scene].on_start_scene()

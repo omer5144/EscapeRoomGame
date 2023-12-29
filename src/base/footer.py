@@ -63,10 +63,19 @@ class Footer(Window):
         for i in range(len(self.item_list)):
             if self.item_list[i].name == items.NO_ITEM:
                 self.item_list[i].name = item_name
-                self.item_list[i].image = pygame.transform.scale(pygame.image.load(f'resources/items/{item_name}.png'),
+                self.item_list[i].image = pygame.transform.scale(pygame.image.load(f'resources/images/{item_name}.png'),
                                                                  (self.__item_content_size, self.__item_content_size))
                 return True
         return False
+
+    def use_selected_item(self) -> None:
+        if self.selected_item_index is not None:
+            for i in range(self.selected_item_index, self.items_max_count - 1):
+                self.item_list[i].name = self.item_list[i + 1].name
+                self.item_list[i].image = self.item_list[i + 1].image
+
+            self.item_list[-1].name = items.NO_ITEM
+            self.item_list[-1].image = None
 
     @property
     def selected_item(self) -> str | None:

@@ -28,6 +28,7 @@ class Header(Window):
 
     def set_title(self, title: str) -> None:
         self.title_surface = pygame.font.Font(None, self.__font_height).render(title, True, colors.BLACK)
+        self.render()
 
     @property
     def __font_height(self) -> int:
