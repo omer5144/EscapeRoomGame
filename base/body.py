@@ -1,7 +1,7 @@
 from pygame import Surface
 from pygame.event import Event
 
-from window import Window, Header, Footer
+from base import Window, Header, Footer
 from scenes import Scene
 
 
@@ -23,12 +23,6 @@ class Body(Window):
         super(Body, self).render()
 
         self.scenes[self.current_scene].render()
-
-    def resize(self, width: int, height: int, x: int, y: int) -> None:
-        super(Body, self).resize(width, height, x, y)
-
-        for scene in self.scenes.values():
-            scene.resize(self.width, self.height, self.x, self.y)
 
     def handle_events(self, events: list[Event]) -> None:
         super(Body, self).handle_events(events)

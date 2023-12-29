@@ -3,7 +3,7 @@ from pygame import Surface, Rect
 from pygame.event import Event
 
 from consts import colors, sizes, items
-from window import Window
+from base import Window
 
 
 class Footer(Window):
@@ -28,21 +28,8 @@ class Footer(Window):
             pygame.draw.rect(self.screen, colors.BLACK, self.get_slot_frame_rect(i))
             pygame.draw.rect(self.screen, colors.GRAY, self.get_slot_content_rect(i))
 
-    def resize(self, width: int, height: int, x: int, y: int) -> None:
-        super(Footer, self).resize(width, height, x, y)
-
-        self.image = pygame.Surface((self.width, self.height))
-
     def handle_events(self, events: list[Event]) -> None:
         super(Footer, self).handle_events(events)
-
-    @property
-    def min_width(self) -> int:
-        return len(self.slots) * self._slot_size + (len(self.slots) + 1) * sizes.SLOTS_X_MARGIN
-
-    @property
-    def min_height(self) -> int:
-        return self.height
 
     @property
     def _slot_size(self):

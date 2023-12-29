@@ -24,21 +24,4 @@ class Window(ABC):
     def render(self) -> None: ...
 
     @abstractmethod
-    def resize(self, width: int, height: int, x: int, y: int) -> None:
-        self.width = width
-        self.height = height
-
-        self.x = x
-        self.y = y
-
-    @abstractmethod
     def handle_events(self, events: list[Event]) -> type | None: ...
-
-    @property
-    def min_width(self) -> int:
-        return 0
-
-    @property
-    def min_height(self) -> int:
-        return 0
-

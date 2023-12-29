@@ -3,7 +3,7 @@ from pygame import Surface, Rect
 from pygame.event import Event
 
 from consts import colors, strings
-from window import Header, Footer
+from base import Header, Footer
 from scenes import Scene
 
 
