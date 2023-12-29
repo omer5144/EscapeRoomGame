@@ -1,38 +1,28 @@
-import pygame
-from pygame import Surface, Rect
-from pygame.event import Event
+from pygame import Surface
 
-from src.consts import strings, colors
+from src.consts import strings, objects, items, backgrounds
 from src.base import Header, Footer
 from src.scenes import Scene
 
 
 class FirstRoom(Scene):
-    key_rect: Rect
-
     def __init__(self, screen: Surface, width: int, height: int, x: int, y: int, header: Header, footer: Footer):
         super(FirstRoom, self).__init__(screen, width, height, x, y, header, footer, strings.FIRST_ROOM_NAME)
 
-        self.key_rect = pygame.Rect(200, 200, 50, 50)
+        self.set_background(backgrounds.FOREST_BACKGROUND)
+        self.add_object(objects.SANTA_OBJECT, 400, 200, 200, 200)
+        self.add_object(objects.SNOWFLAKE_OBJECT, 650, 250, 100, 100)
 
-    def render(self):
-        super(FirstRoom, self).render()
-
-        pygame.draw.rect(self.screen, colors.BLACK, self.key_rect)
-
-    def on_mouse_left_button_down_without_item(self, event: Event) -> type | None:
-        super(FirstRoom, self).on_mouse_left_button_down_without_item(event)
-
-        if self.key_rect.collidepoint(event.pos):
+    def on_item_used_on_object(self, item_name: str, object_name: str) -> type | None:
+        if item_name == items.SNOWFLAKE_ITEM and object_name == objects.SANTA_OBJECT:
+            self.use_selected_item()
             from src.scenes import SecondRoom
             return SecondRoom
 
-    def on_mouse_left_button_down_with_item(self, event: Event, item_name: str) -> None:
-        super(FirstRoom, self).on_mouse_left_button_down_with_item(event, item_name)
-
-        self.set_title(f"You can't use {item_name} on that")
-
-    def on_mouse_right_button_down(self, event: Event) -> None:
-        super(FirstRoom, self).on_mouse_right_button_down(event)
-
-        self.add_item('santa')
+    def on_pressed_on_object(self, object_name: str) -> None:
+        if object_name == objects.SANTA_OBJECT:
+            self.set_title('I want my snowflake')
+        elif object_name == objects.SNOWFLAKE_OBJECT:
+            self.remove_object(objects.SNOWFLAKE_OBJECT)
+            self.add_item(items.SNOWFLAKE_ITEM)
+            self.set_title('This is a special snowflake')
