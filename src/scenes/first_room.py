@@ -1,15 +1,13 @@
-from pygame import Surface
-
 from src.consts import strings, objects, items, backgrounds
-from src.base import Header, Footer
 from src.scenes import Scene
 
 
 class FirstRoom(Scene):
-    def __init__(self, screen: Surface, width: int, height: int, x: int, y: int, header: Header, footer: Footer):
-        super(FirstRoom, self).__init__(screen, width, height, x, y, header, footer, strings.FIRST_ROOM_NAME)
+    def __init__(self, **kwargs):
 
-        self.set_background(backgrounds.FOREST_BACKGROUND)
+        super(FirstRoom, self).__init__(scene_name=strings.FIRST_ROOM_NAME,
+                                        background_name=backgrounds.FOREST_BACKGROUND, **kwargs)
+
         self.add_object(objects.SANTA_OBJECT, 400, 200, 200, 200)
         self.add_object(objects.SNOWFLAKE_OBJECT, 650, 250, 100, 100)
 

@@ -1,7 +1,7 @@
 import asyncio
 
-from consts import sizes
-from base import Game
+from src.consts import sizes
+from src.base import Game
 from src.scenes import FirstRoom, SecondRoom, LastRoom
 
 

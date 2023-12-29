@@ -1,17 +1,15 @@
 import pygame
-from pygame import Surface
 from pygame.event import Event
 
 from src.consts import strings, colors
-from src.base import Header, Footer
 from src.scenes import Scene
 
 
 class SecondRoom(Scene):
     code_input: str
 
-    def __init__(self, screen: Surface, width: int, height: int, x: int, y: int, header: Header, footer: Footer):
-        super(SecondRoom, self).__init__(screen, width, height, x, y, header, footer, strings.SECOND_ROOM_NAME)
+    def __init__(self, **kwargs):
+        super(SecondRoom, self).__init__(scene_name=strings.SECOND_ROOM_NAME, **kwargs)
 
         self.code_input = ""
 
