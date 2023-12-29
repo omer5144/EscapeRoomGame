@@ -4,7 +4,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.event import Event
 
-from src.consts import strings, colors
+from src.consts import strings, colors, backgrounds
 from src.base import Window, Header, Footer
 
 
@@ -26,7 +26,7 @@ class Scene(Window):
     objects: list[Object]
 
     def __init__(self, screen: Surface, width: int, height: int, x: int, y: int, header: Header, footer: Footer,
-                 scene_name: str):
+                 scene_name: str = strings.DEFAULT_SCENE_NAME, background_name: str = backgrounds.DEFAULT_BACKGROUND):
         super(Scene, self).__init__(screen, width, height, x, y)
 
         self.header = header
@@ -35,8 +35,11 @@ class Scene(Window):
         self.scene_name = scene_name
         self.objects = []
 
-        self.background = pygame.Surface((self.width, self.height))
-        self.background.fill(colors.WHITE)
+        if background_name == backgrounds.DEFAULT_BACKGROUND:
+            self.background = pygame.Surface((self.width, self.height))
+            self.background.fill(colors.WHITE)
+        else:
+            self.set_background(background_name)
 
     def render(self) -> None:
         super(Scene, self).render()

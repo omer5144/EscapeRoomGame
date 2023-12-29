@@ -13,8 +13,8 @@ class Body(Window):
                  first_scene_type: type, header: Header, footer: Footer):
         super(Body, self).__init__(screen, width, height, x, y)
 
-        self.scenes = {scene_type: scene_type(self.screen, self.width, self.height, self.x, self.y,
-                                              header, footer) for
+        self.scenes = {scene_type: scene_type(screen=self.screen, width=self.width, height=self.height, x=self.x,
+                                              y=self.y, header=header, footer=footer) for
                        scene_type in
                        scenes_types}
         self.set_current_scene(first_scene_type)
