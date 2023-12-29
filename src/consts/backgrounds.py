@@ -1,0 +1,1 @@
+FOREST_BACKGROUND = 'forest'
