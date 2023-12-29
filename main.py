@@ -2,7 +2,7 @@ import asyncio
 
 from consts import sizes
 from window import Game
-from window.scenes import FirstRoom, SecondRoom, LastRoom
+from scenes import FirstRoom, SecondRoom, LastRoom
 
 
 async def main() -> None:

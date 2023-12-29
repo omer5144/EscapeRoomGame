@@ -4,7 +4,7 @@ from pygame.event import Event
 
 from consts import colors, strings
 from window import Header, Footer
-from window.scenes import Scene
+from scenes import Scene
 
 
 class SecondRoom(Scene):
@@ -30,7 +30,7 @@ class SecondRoom(Scene):
                     self.code_input = self.code_input[:-1]
                 elif event.key == pygame.K_RETURN:
                     if self.code_input == "1234":
-                        from window.scenes import last_room
+                        from scenes import last_room
                         return last_room.LastRoom
                     else:
                         self.code_input = ""

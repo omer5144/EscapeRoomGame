@@ -4,7 +4,7 @@ from pygame.event import Event
 
 from consts import colors, strings
 from window import Header, Footer
-from window.scenes import Scene
+from scenes import Scene
 
 
 class LastRoom(Scene):
