@@ -1,3 +1,5 @@
+import asyncio
+
 import pygame
 import sys
 
@@ -79,13 +81,14 @@ class Game(Window):
     def min_height(self) -> int:
         return self.header.min_height + self.body.min_height + self.footer.min_height
 
-    def start(self) -> None:
+    async def start(self) -> None:
         while self.is_running:
             self.render()
             pygame.display.flip()
 
             events = pygame.event.get()
             self.handle_events(events)
+            await asyncio.sleep(0)
 
         pygame.quit()
         sys.exit()
