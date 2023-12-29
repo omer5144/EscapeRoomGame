@@ -124,3 +124,9 @@ async def main() -> None:
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+## Run As Web Game
+To run as web game, run the following command:
+```shell
+python3.11 -m pygbag ./EscapeRoomGame
+```
