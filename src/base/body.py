@@ -1,8 +1,8 @@
 from pygame import Surface
 from pygame.event import Event
 
-from base import Window, Header, Footer
-from scenes import Scene
+from src.base import Window, Header, Footer
+from src.scenes import Scene
 
 
 class Body(Window):

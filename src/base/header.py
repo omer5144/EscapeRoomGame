@@ -2,8 +2,8 @@ import pygame
 from pygame import Surface
 from pygame.event import Event
 
-from consts import colors, sizes, strings
-from base import Window
+from src.consts import sizes, strings, colors
+from src.base import Window
 
 
 class Header(Window):

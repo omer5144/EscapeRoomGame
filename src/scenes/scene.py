@@ -1,12 +1,11 @@
 from abc import abstractmethod
-from typing import Callable
 
 import pygame
 from pygame import Surface
 from pygame.event import Event
 
-from consts import colors, strings
-from base import Window, Header, Footer
+from src.consts import strings, colors
+from src.base import Window, Header, Footer
 
 
 class Scene(Window):

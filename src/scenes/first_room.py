@@ -2,9 +2,9 @@ import pygame
 from pygame import Surface, Rect
 from pygame.event import Event
 
-from consts import colors, strings
-from base import Header, Footer
-from scenes import Scene
+from src.consts import strings, colors
+from src.base import Header, Footer
+from src.scenes import Scene
 
 
 class FirstRoom(Scene):
@@ -27,5 +27,5 @@ class FirstRoom(Scene):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:  # Left mouse button
                     if self.key_rect.collidepoint(event.pos):
-                        from scenes import second_room
+                        from src.scenes import second_room
                         return second_room.SecondRoom

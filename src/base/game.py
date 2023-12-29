@@ -5,8 +5,8 @@ import sys
 
 from pygame.event import Event
 
-from consts import strings, items
-from base import Window, Header, Body, Footer
+from src.consts import strings, items
+from src.base import Window, Header, Body, Footer
 
 pygame.init()
 
@@ -35,7 +35,7 @@ class Game(Window):
         self.footer_height = footer_height
 
         self.header = Header(self.screen, self.width, self.header_height, self.x, self.__header_y)
-        self.footer = Footer(self.screen, self.width, self.footer_height, self.x, self.__footer_y, items.SLOTS_COUNT)
+        self.footer = Footer(self.screen, self.width, self.footer_height, self.x, self.__footer_y, items.ITEMS_MAX_COUNT)
         self.body = Body(self.screen, self.width, self.body_height, self.x, self.__body_y, scenes_types, first_scene_type,
                          self.header, self.footer)
 

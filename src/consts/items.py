@@ -1,0 +1,3 @@
+ITEMS_MAX_COUNT = 10
+
+NO_ITEM = ""
