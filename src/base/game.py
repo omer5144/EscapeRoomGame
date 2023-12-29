@@ -35,9 +35,10 @@ class Game(Window):
         self.footer_height = footer_height
 
         self.header = Header(self.screen, self.width, self.header_height, self.x, self.__header_y)
-        self.footer = Footer(self.screen, self.width, self.footer_height, self.x, self.__footer_y, items.ITEMS_MAX_COUNT)
-        self.body = Body(self.screen, self.width, self.body_height, self.x, self.__body_y, scenes_types, first_scene_type,
-                         self.header, self.footer)
+        self.footer = Footer(self.screen, self.width, self.footer_height, self.x, self.__footer_y,
+                             items.ITEMS_MAX_COUNT)
+        self.body = Body(self.screen, self.width, self.body_height, self.x, self.__body_y, scenes_types,
+                         first_scene_type, self.header, self.footer)
 
         pygame.display.set_caption(strings.WINDOW_CAPTION)
 
@@ -51,13 +52,14 @@ class Game(Window):
     def handle_events(self, events: list[Event]) -> None:
         super(Game, self).handle_events(events)
 
-        for event in events:
-            if event.type == pygame.QUIT:
-                self.stop()
-
         self.header.handle_events(events)
         self.body.handle_events(events)
         self.footer.handle_events(events)
+
+    def on_quit(self, event: Event) -> None:
+        super(Game, self).on_quit(event)
+
+        self.stop()
 
     async def start(self) -> None:
         while self.is_running:

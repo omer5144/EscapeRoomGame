@@ -20,12 +20,19 @@ class FirstRoom(Scene):
 
         pygame.draw.rect(self.screen, colors.BLACK, self.key_rect)
 
-    def handle_events(self, events: list[Event]) -> type | None:
-        super(FirstRoom, self).handle_events(events)
+    def on_mouse_left_button_down_without_item(self, event: Event) -> type | None:
+        super(FirstRoom, self).on_mouse_left_button_down_without_item(event)
 
-        for event in events:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:  # Left mouse button
-                    if self.key_rect.collidepoint(event.pos):
-                        from src.scenes import second_room
-                        return second_room.SecondRoom
+        if self.key_rect.collidepoint(event.pos):
+            from src.scenes import SecondRoom
+            return SecondRoom
+
+    def on_mouse_left_button_down_with_item(self, event: Event, item_name: str) -> None:
+        super(FirstRoom, self).on_mouse_left_button_down_with_item(event, item_name)
+
+        self.set_title(f"You can't use {item_name} on that")
+
+    def on_mouse_right_button_down(self, event: Event) -> None:
+        super(FirstRoom, self).on_mouse_right_button_down(event)
+
+        self.add_item('santa')

@@ -19,6 +19,3 @@ class LastRoom(Scene):
         super(LastRoom, self).render()
 
         pygame.draw.rect(self.screen, colors.BLUE, self.key_rect)
-
-    def handle_events(self, events: list[Event]) -> None:
-        super(LastRoom, self).handle_events(events)

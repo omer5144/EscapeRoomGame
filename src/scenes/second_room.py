@@ -21,18 +21,16 @@ class SecondRoom(Scene):
         text_surface = pygame.font.Font(None, 36).render(f"Code: {self.code_input}", True, colors.BLACK)
         self.screen.blit(text_surface, (50, self.y + 100))
 
-    def handle_events(self, events: list[Event]) -> type | None:
-        super(SecondRoom, self).handle_events(events)
+    def on_key_down(self, event: Event) -> type | None:
+        super(SecondRoom, self).on_key_down(event)
 
-        for event in events:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_BACKSPACE:
-                    self.code_input = self.code_input[:-1]
-                elif event.key == pygame.K_RETURN:
-                    if self.code_input == "1234":
-                        from src.scenes import last_room
-                        return last_room.LastRoom
-                    else:
-                        self.code_input = ""
-                elif event.unicode.isdigit() and len(self.code_input) < 4:
-                    self.code_input += event.unicode
+        if event.key == pygame.K_BACKSPACE:
+            self.code_input = self.code_input[:-1]
+        elif event.key == pygame.K_RETURN:
+            if self.code_input == "1234":
+                from src.scenes import LastRoom
+                return LastRoom
+            else:
+                self.code_input = ""
+        elif event.unicode.isdigit() and len(self.code_input) < 4:
+            self.code_input += event.unicode

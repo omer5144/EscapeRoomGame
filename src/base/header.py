@@ -26,9 +26,6 @@ class Header(Window):
 
         self.screen.blit(self.title_surface, (self.x + self.__title_x_padding, self.y + sizes.TITLE_Y_PADDING))
 
-    def handle_events(self, events: list[Event]) -> None:
-        super(Header, self).handle_events(events)
-
     def set_title(self, title: str) -> None:
         self.title_surface = pygame.font.Font(None, self.__font_height).render(title, True, colors.BLACK)
 

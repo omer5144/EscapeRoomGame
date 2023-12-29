@@ -1,4 +1,5 @@
 from abc import abstractmethod
+from typing import Optional
 
 import pygame
 from pygame import Surface
@@ -27,16 +28,31 @@ class Scene(Window):
 
         self.scene_name = scene_name
 
+        self.set_title(strings.SCENE_TITLE_FORMAT.format(scene_name=self.scene_name))
+
     def render(self) -> None:
         super(Scene, self).render()
-
-        self.set_title(strings.SCENE_TITLE_FORMAT.format(scene_name=self.scene_name))
 
         self.image.fill(colors.RED)
         self.screen.blit(self.image, (self.x, self.y))
 
-    @abstractmethod
-    def handle_events(self, events: list[Event]) -> type | None: ...
+    def on_mouse_left_button_down(self, event: Event) -> type | None:
+        super(Scene, self).on_mouse_left_button_down(event)
+
+        if self.footer.selected_item:
+            return self.on_mouse_left_button_down_with_item(event, self.footer.selected_item)
+        else:
+            return self.on_mouse_left_button_down_without_item(event)
+
+    def on_mouse_left_button_down_with_item(self, event: Event, item_name: str) -> None:
+        pass
+
+    def on_mouse_left_button_down_without_item(self, event: Event) -> None:
+        pass
 
     def set_title(self, title: str) -> None:
         self.header.set_title(title)
+
+    def add_item(self, item_name: str) -> None:
+        self.footer.add_item(item_name)
+
