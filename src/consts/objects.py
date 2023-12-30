@@ -5,8 +5,8 @@ class ObjectFiles:
     SNOWFLAKE_OBJECT = "snowflake"
     TROPHY_OBJECT = "trophy"
 
-    LEFT_OFFICE_TABLE = "left_computer_desk"
-    RIGHT_OFFICE_TABLE = "right_computer_desk"
+    LEFT_OFFICE_TABLE = "left_new_computer_desk"
+    RIGHT_OFFICE_TABLE = "right_new_computer_desk"
     RIGHT_CLOSET = "right_closet"
     LEFT_CLOSET = "left_closet"
     PTOUCH_NOTE = "closet_ptouch_note"

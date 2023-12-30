@@ -8,8 +8,8 @@ class LeftTeamRoom(Scene):
         super(LeftTeamRoom, self).__init__(scene_name=strings.FIRST_ROOM_NAME,
                                            background_name=backgrounds.LEFT_ROOM_BACKGROUND, **kwargs)
 
-        self.add_object(ObjectNames.AVIV_TABLE, ObjectFiles.LEFT_OFFICE_TABLE, 150, 230, 250, 150)
-        self.add_object(ObjectNames.ADI_TABLE, ObjectFiles.RIGHT_OFFICE_TABLE, 550, 230, 250, 150)
+        self.add_object(ObjectNames.AVIV_TABLE, ObjectFiles.LEFT_OFFICE_TABLE, 170, 260, 250, 150)
+        self.add_object(ObjectNames.ADI_TABLE, ObjectFiles.RIGHT_OFFICE_TABLE, 530, 260, 250, 150)
 
         self.add_object(ObjectNames.PTOUCH_CLOSET, ObjectFiles.LEFT_CLOSET, 0, 150, 170, 290)
 
