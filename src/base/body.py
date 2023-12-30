@@ -3,20 +3,21 @@ from pygame.event import Event
 
 from src.base import Window, Header, Footer
 from src.scenes import Scene
+from src.context.game_context import GameContext
 
 
 class Body(Window):
     scenes: dict[type, Scene]
     current_scene: type
 
-    def __init__(self, screen: Surface, width: int, height: int, x: int, y, scenes_types: set[type],
-                 first_scene_type: type, header: Header, footer: Footer):
+    def __init__(self, game_context: GameContext, screen: Surface, width: int, height: int, x: int, y,
+                 scene_types: set[type], first_scene_type: type, header: Header, footer: Footer):
         super(Body, self).__init__(screen, width, height, x, y)
 
-        self.scenes = {scene_type: scene_type(screen=self.screen, width=self.width, height=self.height, x=self.x,
-                                              y=self.y, header=header, footer=footer) for
+        self.scenes = {scene_type: scene_type(game_context=game_context, screen=self.screen, width=self.width,
+                                              height=self.height, x=self.x, y=self.y, header=header, footer=footer) for
                        scene_type in
-                       scenes_types}
+                       scene_types}
         self.set_current_scene(first_scene_type)
 
     def render(self) -> None:

@@ -7,6 +7,7 @@ from pygame.event import Event
 
 from src.consts import strings, items
 from src.base import Window, Header, Body, Footer
+from src.context.game_context import GameContext
 
 pygame.init()
 
@@ -22,11 +23,15 @@ class Game(Window):
     body: Body
     footer: Footer
 
-    def __init__(self, width: int, header_height: int, body_height, footer_height, x: int, y,
-                 scenes_types: set[type], first_scene_type: type):
+    game_context: GameContext
+
+    def __init__(self, width: int, header_height: int, body_height, footer_height,
+                 x: int, y: int, scenes_types: set[type], first_scene_type: type):
         super(Game, self).__init__(
             pygame.display.set_mode((width, header_height + body_height + footer_height)), width,
             header_height + body_height + footer_height, x, y)
+
+        self.game_context = GameContext()
 
         self.is_running = True
 
@@ -37,8 +42,8 @@ class Game(Window):
         self.header = Header(self.screen, self.width, self.header_height, self.x, self.__header_y)
         self.footer = Footer(self.screen, self.width, self.footer_height, self.x, self.__footer_y,
                              items.ITEMS_MAX_COUNT)
-        self.body = Body(self.screen, self.width, self.body_height, self.x, self.__body_y, scenes_types,
-                         first_scene_type, self.header, self.footer)
+        self.body = Body(self.game_context, self.screen, self.width, self.body_height, self.x, self.__body_y,
+                         scenes_types, first_scene_type, self.header, self.footer)
 
         pygame.display.set_caption(strings.WINDOW_CAPTION)
 

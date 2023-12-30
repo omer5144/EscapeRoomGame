@@ -3,6 +3,8 @@ from typing import Optional
 import pygame
 from pygame import Surface, Rect
 from pygame.event import Event
+from src.context.game_context import GameContext
+from src.context.scene_context import SceneContext
 
 from src.consts import strings, colors, backgrounds
 from src.base import Window, Header, Footer
@@ -18,6 +20,9 @@ class Object:
 
 
 class Scene(Window):
+    scene_context: SceneContext
+    game_context: GameContext
+
     background: Surface
 
     header: Header
@@ -27,9 +32,12 @@ class Scene(Window):
 
     objects: list[Object]
 
-    def __init__(self, screen: Surface, width: int, height: int, x: int, y: int, header: Header, footer: Footer,
-                 scene_name: str = strings.DEFAULT_SCENE_NAME, background_name: str = backgrounds.DEFAULT_BACKGROUND):
+    def __init__(self, game_context: GameContext, screen: Surface, width: int, height: int,
+                 x: int, y: int, header: Header, footer: Footer, scene_name: str = strings.DEFAULT_SCENE_NAME,
+                 background_name: str = backgrounds.DEFAULT_BACKGROUND, scene_context_type: type = SceneContext):
         super(Scene, self).__init__(screen, width, height, x, y)
+
+        self.scene_context = scene_context_type(game_context=game_context)
 
         self.header = header
         self.footer = footer
