@@ -7,3 +7,14 @@ DEFAULT_SCENE_NAME = ""
 FIRST_ROOM_NAME = "Room 1"
 SECOND_ROOM_NAME = "Room 2"
 LAST_ROOM_NAME = "Last Room"
+
+
+PTOUCH_SENTENCES = [
+    "first sentence",
+    "second sentence",
+    "third sentence",
+    "fourth sentence",
+    "fifth sentence",
+    "sixth sentence"
+]
+

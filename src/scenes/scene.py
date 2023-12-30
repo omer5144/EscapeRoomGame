@@ -7,6 +7,8 @@ from pygame.event import Event
 from src.consts import strings, colors, backgrounds
 from src.base import Window, Header, Footer
 
+from src.consts.config import Config
+
 
 @dataclass
 class Object:
@@ -51,7 +53,7 @@ class Scene(Window):
 
     def on_mouse_left_button_down(self, event: Event) -> type | None:
         super(Scene, self).on_mouse_left_button_down(event)
-        for obj in self.objects:
+        for obj in self.objects[::-1]:
             if obj.rect.collidepoint(event.pos):
                 x, y = event.pos
                 if obj.image.get_at((x - obj.rect.x, y - obj.rect.y)).a > 0:
@@ -67,17 +69,40 @@ class Scene(Window):
         pass
 
     def set_background(self, background_name: str) -> None:
-        self.background = pygame.transform.scale(
-            pygame.image.load(f'resources/images/{background_name}.png'), (self.width, self.height))
+        try:
+            self.background = pygame.transform.scale(
+                pygame.image.load(f'resources/images/{background_name}.png'), (self.width, self.height))
+            return
+        except:
+            if not Config.DEBUG:
+                raise Exception("image does not exist in release mode")
+
+        try:
+            self.background = pygame.transform.scale(
+                pygame.image.load(f'debug_resources/images/{background_name}.png'), (self.width, self.height))
+        except:
+            raise Exception("image does not exist in debug mode")
 
     def on_start_scene(self) -> None:
         self.set_title(strings.SCENE_TITLE_FORMAT.format(scene_name=self.scene_name))
 
-    def add_object(self, object_name: str, x: int, y: int, width: int, height: int) -> None:
-        self.objects.append(Object(object_name,
-                                   pygame.transform.scale(pygame.image.load(f'resources/images/{object_name}.png'),
-                                                          (width, height)),
-                                   pygame.Rect(self.x + x, self.y + y, width, height)))
+    def add_object(self, object_name: str, object_filename: str, x: int, y: int, width: int, height: int) -> None:
+        try:
+            self.objects.append(Object(object_name,
+                                       pygame.transform.scale(pygame.image.load(f'resources/images/{object_filename}.png'),
+                                                              (width, height)),
+                                       pygame.Rect(self.x + x, self.y + y, width, height)))
+            return
+        except:
+            if not Config.DEBUG:
+                raise Exception("object does not exist in release mode")
+        try:
+            self.objects.append(Object(object_name,
+                                       pygame.transform.scale(pygame.image.load(f'debug_resources/images/{object_filename}.png'),
+                                                              (width, height)),
+                                       pygame.Rect(self.x + x, self.y + y, width, height)))
+        except:
+            raise Exception("object does not exist in debug mode")
 
     def remove_object(self, object_name) -> None:
         for obj in self.objects.copy():
