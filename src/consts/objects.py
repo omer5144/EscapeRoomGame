@@ -17,6 +17,9 @@ class ObjectFiles:
     RIGHT_ARROW = "right_arrow"
     LEFT_ARROW = "left_arrow"
 
+    EXAMPLE_CHARACTER = "example_character"
+    ADI_CHARACTER = "adi_character"
+
 
 class ObjectNames:
     OMER_TABLE = "omer_table"
@@ -35,3 +38,6 @@ class ObjectNames:
     DOWN_ARROW = "down_arrow"
     RIGHT_ARROW = "right_arrow"
     LEFT_ARROW = "left_arrow"
+
+    EXAMPLE_CHARACTER = "example_character"
+    ADI_CHARACTER = "adi_character"

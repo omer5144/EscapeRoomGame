@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-
+from typing import Optional
 import pygame
 from pygame import Surface, Rect
 from pygame.event import Event
@@ -86,23 +86,23 @@ class Scene(Window):
     def on_start_scene(self) -> None:
         self.set_title(strings.SCENE_TITLE_FORMAT.format(scene_name=self.scene_name))
 
-    def add_object(self, object_name: str, object_filename: str, x: int, y: int, width: int, height: int) -> None:
+    def add_object(self, object_name: str, object_filename: str, x: int, y: int, width: int, height: int,
+                   angle: int = 0) -> None:
         try:
-            self.objects.append(Object(object_name,
-                                       pygame.transform.scale(pygame.image.load(f'resources/images/{object_filename}.png'),
-                                                              (width, height)),
-                                       pygame.Rect(self.x + x, self.y + y, width, height)))
-            return
+            object = pygame.image.load(f'resources/images/{object_filename}.png')
         except:
             if not Config.DEBUG:
                 raise Exception("object does not exist in release mode")
+
         try:
-            self.objects.append(Object(object_name,
-                                       pygame.transform.scale(pygame.image.load(f'debug_resources/images/{object_filename}.png'),
-                                                              (width, height)),
-                                       pygame.Rect(self.x + x, self.y + y, width, height)))
+            object = pygame.image.load(f'debug_resources/images/{object_filename}.png')
         except:
             raise Exception("object does not exist in debug mode")
+
+        object = pygame.transform.scale(object, (width, height))
+        object = pygame.transform.rotate(object, angle)
+
+        self.objects.append(Object(object_name, object, pygame.Rect(self.x + x, self.y + y, width, height)))
 
     def remove_object(self, object_name) -> None:
         for obj in self.objects.copy():

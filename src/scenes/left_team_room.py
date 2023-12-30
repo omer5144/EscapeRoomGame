@@ -11,6 +11,9 @@ class LeftTeamRoom(Scene):
         self.add_object(ObjectNames.AVIV_TABLE, ObjectFiles.LEFT_OFFICE_TABLE, 170, 260, 250, 150)
         self.add_object(ObjectNames.ADI_TABLE, ObjectFiles.RIGHT_OFFICE_TABLE, 530, 260, 250, 150)
 
+        self.add_object(ObjectNames.ADI_CHARACTER, ObjectFiles.ADI_CHARACTER, 650, 220, 90,
+                        80, 360-6)
+
         self.add_object(ObjectNames.PTOUCH_CLOSET, ObjectFiles.LEFT_CLOSET, 0, 150, 170, 290)
 
         self.add_object(ObjectNames.PTOUCH_NOTES[0], ObjectFiles.PTOUCH_NOTE, 55, 330, 40, 30)
@@ -22,6 +25,8 @@ class LeftTeamRoom(Scene):
         self.add_object(ObjectNames.PTOUCH_NOTES[5], ObjectFiles.PTOUCH_NOTE, 105, 360, 40, 30)
 
         self.add_object(ObjectNames.RIGHT_ARROW, ObjectFiles.RIGHT_ARROW, 920, 260, 70, 80)
+
+
 
 
     def on_item_used_on_object(self, item_name: str, object_name: str) -> type | None:
