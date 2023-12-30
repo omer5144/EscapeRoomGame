@@ -102,10 +102,10 @@ class Scene(Window):
             if not Config.DEBUG:
                 raise Exception("object does not exist in release mode")
 
-        try:
-            object = pygame.image.load(f'debug_resources/images/{object_filename}.png')
-        except:
-            raise Exception("object does not exist in debug mode")
+            try:
+                object = pygame.image.load(f'debug_resources/images/{object_filename}.png')
+            except:
+                raise Exception("object does not exist in debug mode")
 
         object = pygame.transform.scale(object, (width, height))
         object = pygame.transform.rotate(object, angle)

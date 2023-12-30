@@ -29,3 +29,6 @@ class MiddleTeamRoomBack(Scene):
         elif object_name == ObjectNames.DOWN_ARROW:
             from src.scenes import MiddleTeamRoomFront
             return MiddleTeamRoomFront
+        elif object_name == ObjectNames.IFTACH_TABLE:
+            from src.scenes import IftachComputer
+            return IftachComputer

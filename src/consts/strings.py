@@ -18,3 +18,8 @@ PTOUCH_SENTENCES = [
     "sixth sentence"
 ]
 
+IFTACH_USERNAME = "iftach"
+COMPUTER_PASSWORD_PLACEHOLDER = "****"
+
+
+
