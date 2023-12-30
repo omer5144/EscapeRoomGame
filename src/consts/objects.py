@@ -24,6 +24,7 @@ class ObjectNames:
     DANI_TABLE = "dani_table"
     ADI_TABLE = "adi_table"
     AVIV_TABLE = "aviv_table"
+    NOAM_TABLE = "noam_table"
     SPARE_TABLE = "spare_table"
     PTOUCH_CLOSET = "ptouch_closet"
 

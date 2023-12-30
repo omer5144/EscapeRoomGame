@@ -6,6 +6,7 @@ from .last_room import LastRoom
 from .left_team_room import LeftTeamRoom
 from .right_team_room import RightTeamRoom
 from .middle_team_room_back import MiddleTeamRoomBack
+from .middle_team_room_front import MiddleTeamRoomFront
 from .ptouch_note import (PtouchNoteFirst, PtouchNoteSecond, PtouchNoteThird, PtouchNoteFourth, PtouchNoteFifth,
                           PtouchNoteSixth)
 

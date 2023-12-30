@@ -14,6 +14,7 @@ class MiddleTeamRoomBack(Scene):
 
         self.add_object(ObjectNames.RIGHT_ARROW, ObjectFiles.RIGHT_ARROW, 920, 260, 70, 80)
         self.add_object(ObjectNames.LEFT_ARROW, ObjectFiles.LEFT_ARROW, 10, 260, 70, 85)
+        self.add_object(ObjectNames.DOWN_ARROW, ObjectFiles.DOWN_ARROW, 440, 410, 100, 80)
 
     def on_item_used_on_object(self, item_name: str, object_name: str) -> type | None:
         pass
@@ -25,3 +26,6 @@ class MiddleTeamRoomBack(Scene):
         elif object_name == ObjectNames.LEFT_ARROW:
             from src.scenes import LeftTeamRoom
             return LeftTeamRoom
+        elif object_name == ObjectNames.DOWN_ARROW:
+            from src.scenes import MiddleTeamRoomFront
+            return MiddleTeamRoomFront
