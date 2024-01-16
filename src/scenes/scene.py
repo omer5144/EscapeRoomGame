@@ -26,7 +26,8 @@ class Scene(Window):
     objects: list[Object]
 
     def __init__(self, screen: Surface, width: int, height: int, x: int, y: int, header: Header, footer: Footer,
-                 scene_name: str = strings.DEFAULT_SCENE_NAME, background_name: str = backgrounds.DEFAULT_BACKGROUND):
+                 scene_name: str = strings.DEFAULT_SCENE_NAME,
+                 background_name: str = backgrounds.DEFAULT_BODY_BACKGROUND):
         super(Scene, self).__init__(screen, width, height, x, y)
 
         self.header = header
@@ -35,7 +36,7 @@ class Scene(Window):
         self.scene_name = scene_name
         self.objects = []
 
-        if background_name == backgrounds.DEFAULT_BACKGROUND:
+        if background_name == backgrounds.DEFAULT_BODY_BACKGROUND:
             self.background = pygame.Surface((self.width, self.height))
             self.background.fill(colors.WHITE)
         else:
