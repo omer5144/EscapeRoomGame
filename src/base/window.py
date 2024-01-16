@@ -55,4 +55,4 @@ class Window(ABC):
 
     @staticmethod
     def make_sound(sound_name: str) -> None:
-        pygame.mixer.Sound.play(pygame.mixer.Sound(f'resources/sounds/{sound_name}.wav'))
+        pygame.mixer.Sound.play(pygame.mixer.Sound(f'resources/sounds/{sound_name}'))
