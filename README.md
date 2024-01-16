@@ -10,7 +10,7 @@ This project is a template for an "Escape Room" game.
   - images - the images files to display in the game
 
 ### Base Classes
-- Window - a generic window in the game, defines the rendering and events handling methods
+- Window - a generic window in the game, defines the rendering, events handling and other generic methods
 - Game - the game loop, contains the 3 parts of the window
 - header - the header of the screen, contains the title
 - body - the middle of the screen, contains the switching scenes
@@ -23,7 +23,7 @@ This project is a template for an "Escape Room" game.
 - backgrounds - contains all the scene's backgrounds names of the game as constants
 - items - contains all the items (to be collected) names of the game as constants
 - objects - contains all the objects (appear in the scenes) of the game as constants
-
+- sounds - contains all the possible sounds  name as constants
 ### Scenes Classes
 - Scene - the generic scene which every other scene should inherit
 - any other scenes you add to the game
@@ -75,8 +75,9 @@ In these methods you can also call the following methods:
 - `self.self.use_selected_item() -> None` - to remove the selected item from the items list
 - `self.set_title(title: str) -> None` - to change the header title
 - `self.remove_object(object_name: str) -> None` - to remove an object from the scene
+- `self.make_sound(sound_name: str) -> None` - to make a sound
 
-You can also move to another scene if your event handler method returns this scene class type
+You can also move to another scene if your event handler method returns this scene class type.
 An Example:
 ```python
 from src.consts import strings, objects, items, backgrounds
@@ -123,4 +124,10 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
+```
+
+## Run As Web Game
+To run as web game, run the following command:
+```shell
+python3.11 -m pygbag ./EscapeRoomGame
 ```

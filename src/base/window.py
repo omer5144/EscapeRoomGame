@@ -52,3 +52,7 @@ class Window(ABC):
 
     def on_key_down(self, event: Event) -> None:
         pass
+
+    @staticmethod
+    def make_sound(sound_name: str) -> None:
+        pygame.mixer.Sound.play(pygame.mixer.Sound(f'resources/sounds/{sound_name}'))

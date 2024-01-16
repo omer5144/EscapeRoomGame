@@ -5,7 +5,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.event import Event
 
-from src.consts import sizes, items, colors
+from src.consts import sizes, items, colors, sounds
 from src.base import Window
 
 
@@ -63,8 +63,10 @@ class Footer(Window):
         for i in range(len(self.item_list)):
             if self.item_list[i].name == items.NO_ITEM:
                 self.item_list[i].name = item_name
-                self.item_list[i].image = pygame.transform.scale(pygame.image.load(f'resources/images/{item_name}.png'),
+                self.item_list[i].image = pygame.transform.scale(pygame.image.load(f'resources/images/{item_name}'),
                                                                  (self.__item_content_size, self.__item_content_size))
+
+                self.make_sound(sounds.ADD_ITEM_SOUND)
                 return True
         return False
 
