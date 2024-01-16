@@ -1,1 +1,1 @@
-ADD_ITEM_SOUND = 'add_item'
+ADD_ITEM_SOUND = 'add_item.wav'

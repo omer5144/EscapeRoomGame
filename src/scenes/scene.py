@@ -68,14 +68,14 @@ class Scene(Window):
 
     def set_background(self, background_name: str) -> None:
         self.background = pygame.transform.scale(
-            pygame.image.load(f'resources/images/{background_name}.png'), (self.width, self.height))
+            pygame.image.load(f'resources/images/{background_name}'), (self.width, self.height))
 
     def on_start_scene(self) -> None:
         self.set_title(strings.SCENE_TITLE_FORMAT.format(scene_name=self.scene_name))
 
     def add_object(self, object_name: str, x: int, y: int, width: int, height: int) -> None:
         self.objects.append(Object(object_name,
-                                   pygame.transform.scale(pygame.image.load(f'resources/images/{object_name}.png'),
+                                   pygame.transform.scale(pygame.image.load(f'resources/images/{object_name}'),
                                                           (width, height)),
                                    pygame.Rect(self.x + x, self.y + y, width, height)))
 

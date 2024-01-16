@@ -1,3 +1,3 @@
-SANTA_OBJECT = "santa"
-SNOWFLAKE_OBJECT = "snowflake"
-TROPHY_OBJECT = "trophy"
+SANTA_OBJECT = "santa.png"
+SNOWFLAKE_OBJECT = "snowflake.png"
+TROPHY_OBJECT = "trophy.png"
