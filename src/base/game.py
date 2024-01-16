@@ -5,7 +5,7 @@ import sys
 
 from pygame.event import Event
 
-from src.consts import strings, items
+from src.consts import strings, items, sounds
 from src.base import Window, Header, Body, Footer
 
 pygame.init()
@@ -14,6 +14,7 @@ pygame.mixer.init()
 
 class Game(Window):
     is_running: bool
+    music_name: str
 
     header_height: int
     body_height: int
@@ -24,11 +25,12 @@ class Game(Window):
     footer: Footer
 
     def __init__(self, width: int, header_height: int, body_height, footer_height, x: int, y,
-                 scenes_types: set[type], first_scene_type: type):
+                 scenes_types: set[type], first_scene_type: type, music_name: str = ""):
         super(Game, self).__init__(
             pygame.display.set_mode((width, header_height + body_height + footer_height)), width,
             header_height + body_height + footer_height, x, y)
 
+        self.music_name = music_name
         self.is_running = True
 
         self.header_height = header_height
@@ -63,6 +65,11 @@ class Game(Window):
         self.stop()
 
     async def start(self) -> None:
+        if self.music_name:
+            pygame.mixer.music.load(f'resources/sounds/{self.music_name}')
+            pygame.mixer.music.set_volume(sounds.BACKGROUND_MUSIC_VOLUME)
+            pygame.mixer.music.play(-1)
+
         while self.is_running:
             self.render()
             pygame.display.flip()
