@@ -9,6 +9,7 @@ from src.consts import strings, items
 from src.base import Window, Header, Body, Footer
 
 pygame.init()
+pygame.mixer.init()
 
 
 class Game(Window):
