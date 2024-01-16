@@ -5,7 +5,7 @@ import sys
 
 from pygame.event import Event
 
-from src.consts import strings, items
+from src.consts import strings, items, music
 from src.base import Window, Header, Body, Footer
 
 pygame.init()
@@ -63,6 +63,11 @@ class Game(Window):
         self.stop()
 
     async def start(self) -> None:
+        if music.BACKGROUND_MUSIC:
+            pygame.mixer.music.load(f'resources/sounds/{music.BACKGROUND_MUSIC}')
+            pygame.mixer.music.set_volume(music.BACKGROUND_MUSIC_VOLUME)
+            pygame.mixer.music.play(-1)
+
         while self.is_running:
             self.render()
             pygame.display.flip()

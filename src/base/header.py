@@ -1,28 +1,31 @@
 import pygame
 from pygame import Surface
-from pygame.event import Event
 
-from src.consts import sizes, strings, colors
+from src.consts import sizes, strings, colors, backgrounds
 from src.base import Window
 
 
 class Header(Window):
-    image: Surface
+    background: Surface
 
     title_surface: Surface
 
     def __init__(self, screen: Surface, width: int, height: int, x: int, y, title: str = strings.DEFAULT_HEADER_TITLE):
         super(Header, self).__init__(screen, width, height, x, y)
 
-        self.image = pygame.Surface((self.width, self.height))
+        if backgrounds.HEADER_BACKGROUND:
+            self.background = pygame.transform.scale(
+                pygame.image.load(f'resources/images/{backgrounds.HEADER_BACKGROUND}'), (self.width, self.height))
+        else:
+            self.background = pygame.Surface((self.width, self.height))
+            self.background.fill(colors.BLUE)
 
         self.set_title(title)
 
     def render(self) -> None:
         super(Header, self).render()
 
-        self.image.fill(colors.BLUE)
-        self.screen.blit(self.image, (self.x, self.y))
+        self.screen.blit(self.background, (self.x, self.y))
 
         self.screen.blit(self.title_surface, (self.x + self.__title_x_padding, self.y + sizes.TITLE_Y_PADDING))
 
