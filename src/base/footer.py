@@ -5,7 +5,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.event import Event
 
-from src.consts import sizes, items, colors, sounds
+from src.consts import sizes, items, colors, sounds, backgrounds
 from src.base import Window
 
 
@@ -18,7 +18,7 @@ class Item:
 
 
 class Footer(Window):
-    image: Surface
+    background: Surface
 
     items_max_count: int
     item_list: list[Item]
@@ -27,7 +27,12 @@ class Footer(Window):
     def __init__(self, screen: Surface, width: int, height: int, x: int, y, items_max_count: int):
         super(Footer, self).__init__(screen, width, height, x, y)
 
-        self.image = pygame.Surface((self.width, self.height))
+        if backgrounds.HEADER_BACKGROUND:
+            self.background = pygame.transform.scale(
+                pygame.image.load(f'resources/images/{backgrounds.FOOTER_BACKGROUND}'), (self.width, self.height))
+        else:
+            self.background = pygame.Surface((self.width, self.height))
+            self.background.fill(colors.BLUE)
 
         self.items_max_count = items_max_count
         self.item_list = [
@@ -38,8 +43,7 @@ class Footer(Window):
     def render(self) -> None:
         super(Footer, self).render()
 
-        self.image.fill(colors.BLUE)
-        self.screen.blit(self.image, (self.x, self.y))
+        self.screen.blit(self.background, (self.x, self.y))
 
         for index, item in enumerate(self.item_list):
             pygame.draw.rect(self.screen, colors.GREEN if self.selected_item_index == index else colors.BLACK,
